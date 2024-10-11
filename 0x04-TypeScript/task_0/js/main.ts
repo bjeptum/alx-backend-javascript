@@ -32,6 +32,7 @@ const renderTable = () => {
   headerFirstName.textContent = "First Name";
   headerLocation.textContent = "Location";
 
+
   headerRow.appendChild(headerFirstName);
   headerRow.appendChild(headerLocation);
   table.appendChild(headerRow)
@@ -40,6 +41,7 @@ const renderTable = () => {
     const row = document.createElement("tr");
     const firstNameCell = document.createElement("td");
     const locationCell = document.createElement("td");
+  
 
     firstNameCell.textContent = student.firstName;
     locationCell.textContent = student.location;
