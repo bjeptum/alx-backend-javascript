@@ -63,3 +63,17 @@ export function executeWork(employee: Director | Teacher): void {
         console.log(employee.workTeacherTasks());
     }
 }
+
+// Export the Subjects string literal type
+export type Subjects = 'Math' | 'History';
+
+// Function to teach a class based on the subject
+export function teachClass(todayClass: Subjects): string {
+    if (todayClass === 'Math') {
+        return 'Teaching Math';
+    } else if (todayClass === 'History') {
+        return 'Teaching History';
+    }
+    // Although unreachable, TypeScript requires a return type
+    return 'Invalid subject';
+}
