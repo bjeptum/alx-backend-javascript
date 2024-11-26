@@ -9,7 +9,7 @@ const rl = readline.createInterface({
 });
 
 // Display welcome message and prompt for the user's name
-rl.question('Welcome to Holberton School, what is your name? ', (name) => {
+rl.question('Welcome to Holberton School, what is your name?\n', (name) => {
   // Display the user's name
   console.log(`Your name is: ${name}`);
 
