@@ -13,11 +13,11 @@ rl.question('Welcome to Holberton School, what is your name?\n', (name) => {
   // Display the user's name
   console.log(`Your name is: ${name}`);
 
-  // Display closing message when program ends
-  rl.on('close', () => {
-    console.log('This important software is now closing');
-  });
-
   // Close readline interface to end program
   rl.close();
+});
+
+// Display closing message when program ends
+rl.on('close', () => {
+  console.log('This important software is now closing');
 });
