@@ -2,13 +2,13 @@
 
 const fs = require('fs');
 
-function countStudents (path) {
+function countStudents(path) {
   try {
     // Read file synchronously
     const data = fs.readFileSync(path, 'utf8');
 
     // Split the content into lines and filter out empty lines
-    const lines = data.trim().split('\n').filter(line => line.trim() !== '');
+    const lines = data.trim().split('\n').filter((line) => line.trim() !== '');
 
     // Skip the header (first line), and process the rest
     const students = lines.slice(1);
@@ -18,7 +18,7 @@ function countStudents (path) {
 
     // Loop through each student and categorize them by their field
     students.forEach((line) => {
-      const [firstname,lastname,age, field] = line.split(',');
+      const [firstname, , , field] = line.split(',');
 
       if (firstname && field) {
         // Add the student to the correct field
@@ -37,7 +37,9 @@ function countStudents (path) {
 
     // Log the number of students and their names by field
     for (const field in fields) {
-      console.log(`Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}`);
+      if (fields.hasOwnProperty.call(fields, field)) {
+        console.log(`Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}`);
+      }
     }
   } catch (err) {
     // If an error occurs (e.g., file not found), throw the error
