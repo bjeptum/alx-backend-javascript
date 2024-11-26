@@ -8,16 +8,17 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-// Display welcome message and prompt for the user's name
-rl.question('Welcome to Holberton School, what is your name?\n', (name) => {
-  // Display the user's name
-  console.log(`Your name is: ${name}`);
-
-  // Close readline interface to end program
-  rl.close();
-});
-
-// Display closing message when program ends
-rl.on('close', () => {
-  console.log('This important software is now closing');
-});
+if (process.stdin.isTTY) {
+  console.log('Welcome to Holberton School, what is your name?');
+  rl.question('', (name) => {
+    console.log(`Your name is: ${name}`);
+    rl.close();
+  });
+} else {
+  process.stdin.once('data', (input) => {
+    const name = input.toString().trim();
+    console.log('Welcome to Holberton School, what is your name?');
+    console.log(`Your name is: ${name}`);
+    console.log('This important software is now closing');
+  });
+}
